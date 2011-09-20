@@ -1,64 +1,81 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+//All application functionality is namespaced here
+var ph = {};
+(function() {
+	//application state variables are held in this namespace.  
+	//Like the current app window, for instance, which is created in app.js
+	ph.app = {};
 
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+	//Extend an object with the properties from another 
+	//(thanks Dojo - http://docs.dojocampus.org/dojo/mixin)
+	var empty = {};
+	function mixin(/*Object*/ target, /*Object*/ source){
+		var name, s, i;
+		for(name in source){
+			s = source[name];
+			if(!(name in target) || (target[name] !== s && (!(name in empty) || empty[name] !== s))){
+				target[name] = s;
+			}
+		};
+		return target; // Object
+	};
+	ph.mixin = function(/*Object*/ obj, /*Object...*/ props){
+		if(!obj){ obj = {}; }
+		for(var i=1, l=arguments.length; i<l; i++){
+			mixin(obj, arguments[i]);
+		}
+		return obj; // Object
+	};
 
+	//create a new object, combining the properties of the passed objects with the last arguments having
+	//priority over the first ones
+	ph.combine = function(/*Object*/ obj, /*Object...*/ props) {
+		var newObj = {};
+		for(var i=0, l=arguments.length; i<l; i++){
+			mixin(newObj, arguments[i]);
+		}
+		return newObj;
+	};
 
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
-});
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
-});
+	//OS, Locale, and Density specific branching helpers adapted from the Helium library
+	//for Titanium: http://github.com/kwhinnery/Helium
+	var locale = Ti.Platform.locale;
+	var osname = Ti.Platform.osname;
+	ph.osname = osname;
 
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
+	/*
+		Branching logic based on locale
+	*/
+	ph.locale = function(/*Object*/ map) {
+		var def = map.def||null; //default function or value
+		if (map[locale]) {
+			if (typeof map[locale] == 'function') { return map[locale](); }
+			else { return map[locale]; }
+		}
+		else {
+			if (typeof def == 'function') { return def(); }
+			else { return def; }
+		}
+	};
 
-win1.add(label1);
+	/*
+		Branching logic based on OS
+	*/
+	ph.os = function(/*Object*/ map) {
+		var def = map.def||null; //default function or value
+		if (typeof map[osname] != 'undefined') {
+			if (typeof map[osname] == 'function') { return map[osname](); }
+			else { return map[osname]; }
+		}
+		else {
+			if (typeof def == 'function') { return def(); }
+			else { return def; }
+		}
+	};
+})();
 
-//
-// create controls tab and root window
-//
-var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
-});
-var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
-    title:'Tab 2',
-    window:win2
-});
-
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
-
-win2.add(label2);
-
-
-
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
-
-
-// open tab group
-tabGroup.open();
+//Include additional namespaces
+Ti.include(
+	'/ui/ui.js',
+	'/model/model.js',
+	'/config/config.js'
+);
