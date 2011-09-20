@@ -79,3 +79,5 @@ Ti.include(
 	'/model/model.js',
 	'/config/config.js'
 );
+// TODO Could use the splash screen fader
+// ph.ui.createSplashView(); 
