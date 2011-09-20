@@ -1,7 +1,14 @@
 (function(){
 	ph.ui.dashboard = function(){
-		alert('Dashboard Page');
 		return;
 	};
+	
+	ph.ui.showDashboard = function(){
+		
+		// create background colour
+		
+		
+		
+	}
 	
 })();

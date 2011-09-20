@@ -24,28 +24,25 @@
 	};
 
 	ph.app.dashboard = ph.ui.createAppWindow({
-		title: 'Pigeonhole', 
+		title: '', 
 		titleid: 'winPigeonHole', 
+		barImage: 'images/dashboardImageTitle.png',
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 
-	ph.app.tags = ph.ui.createAppWindow({
-		title: 'Tags', 
-		titleid: 'winTags', 
+	
+	ph.app.faves = ph.ui.createAppWindow({
+		// title: 'Faves', 
+		barImage: 'images/faveImageTitle.png',
+		orientationModes: [Titanium.UI.PORTRAIT]
+	});
+
+	ph.app.settings = ph.ui.createAppWindow({
+		// title: 'Faves', 
+		barImage: 'images/settingsImageTitle.png',
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 	
-	ph.app.faves = ph.ui.createAppWindow({
-		title: 'Faves', 
-		titleid: 'winFaves', 
-		orientationModes: [Titanium.UI.PORTRAIT]
-	});
-
-	ph.app.about = ph.ui.createAppWindow({
-		title: 'About', 
-		titleid: 'winAbout', 
-		orientationModes: [Titanium.UI.PORTRAIT]
-	});
 		
 	// Create New tab group before adding individual tabs
 	// TODO -50 tab group recomment
@@ -59,32 +56,32 @@
 	var tab1 = ph.ui.createAppTab({
 	    window:ph.app.dashboard,
 		id:'winDashboard',
-		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
+		icon:'images/tabgroups/' +ph.ui.tabImage('basic2-068'),
 		title:"Dashboard"
 	});
-	var tab2 = ph.ui.createAppTab({
-		id:'winTags',
-		icon:'images/tabgroups/' +ph.ui.tabImage('dfdf') ,
-		title:"Tags",
-	    window:ph.app.tags
-	});
+	// var tab2 = ph.ui.createAppTab({
+		// id:'winTags',
+		// icon:'images/tabgroups/' +ph.ui.tabImage('basic2-062') ,
+		// title:"Tags",
+	    // window:ph.app.tags
+	// });
 
 	var tab3 = ph.ui.createAppTab({
 		id:'winFaves',
-		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
+		icon:'images/tabgroups/' +ph.ui.tabImage('basic1-067'),
 		title:"Faves",
 	    window:ph.app.faves
 	});
 
-	var tab4 = ph.ui.createAppTab({
-		id:'winAbout',
-		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
-		title:"About",
-	    window:ph.app.about
-	});
+	// var tab4 = ph.ui.createAppTab({
+		// id:'winAbout',
+		// icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
+		// title:"About",
+	    // window:ph.app.about
+	// });
 	var tab5 = ph.ui.createAppTab({
 		id:'winSettings',
-		icon:'images/tabgroups/' +ph.ui.tabImage('sdfds'),
+		icon:'images/tabgroups/' +ph.ui.tabImage('basic2-299'),
 		title:"Settings",
 	    window:ph.app.settings
 	});
@@ -92,9 +89,9 @@
 
 	
 	ph.ui.tabGroup.addTab(tab1);
-	ph.ui.tabGroup.addTab(tab2);
+	// ph.ui.tabGroup.addTab(tab2);
 	ph.ui.tabGroup.addTab(tab3);
-	ph.ui.tabGroup.addTab(tab4);
+	// ph.ui.tabGroup.addTab(tab4);
 	ph.ui.tabGroup.addTab(tab5);
 
 	ph.ui.tabGroup.addEventListener('focus', function(e)
@@ -117,17 +114,17 @@
 			ph.ui.dashboard();
 			break;
 			case 1:
-			ph.ui.tags();
-			break;
-			case 2:
 			ph.ui.faves();
 			break;
-			case 3:
-			ph.ui.about();
-			break;
-			case 4:
+			case 2:
 			ph.ui.settings();
 			break;
+			// case 3:
+			// ph.ui.about();
+			// break;
+			// case 4:
+			// ph.ui.settings();
+			// break;
 		}
 	});
 	ph.ui.toggleTabGroup = function(tabgroup){
