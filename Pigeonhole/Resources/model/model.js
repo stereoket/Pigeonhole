@@ -8,5 +8,7 @@
 
 	
 	Ti.include(
-		'/model/BoxData.js'
+		'/model/BoxData.js',
+		'/model/Twitter.js',
+		'/model/db.js'
 	);
