@@ -1,7 +1,7 @@
 (function() {
 	ph.model = {
-		dbname:'pigeon.sqlite', //overwrite this before creating your first entity to change
-		resLoc:'db/pigeon.sqlite'
+		dbname:'pigeonhole.sqlite', //overwrite this before creating your first entity to change
+		resLoc:'db/pigeonhole.sqlite'
 	};
 	
 })();
