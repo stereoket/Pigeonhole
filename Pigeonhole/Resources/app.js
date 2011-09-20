@@ -73,12 +73,17 @@ var ph = {};
 	};
 })();
 
+// Include the oAuth lib files
+Ti.include(
+	'lib/sha1.js',
+	'lib/oauth.js',
+	'lib/oauth_adapter.js',
+	'lib/twitter_api.js'
+);
+
 //Include additional namespaces
 Ti.include(
 	'/ui/ui.js',
 	'/model/model.js',
 	'/config/config.js'
 );
-
-Ti.Box = require("ti.box");
-Ti.Box.apiKey ="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
