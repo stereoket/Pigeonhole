@@ -30,20 +30,20 @@
 	});
 
 	ph.app.tags = ph.ui.createAppWindow({
-		title: 'PigeonHole', 
+		title: 'Pigeonhole', 
 		titleid: 'winPigeonHole', 
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 	
-	ph.app.dashboard = ph.ui.createAppWindow({
-		title: 'PigeonHole', 
-		titleid: 'winPigeonHole', 
+	ph.app.faves = ph.ui.createAppWindow({
+		title: 'Faves', 
+		titleid: 'winFaves', 
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 
-	ph.app.dashboard = ph.ui.createAppWindow({
-		title: 'PigeonHole', 
-		titleid: 'winPigeonHole', 
+	ph.app.about = ph.ui.createAppWindow({
+		title: 'About', 
+		titleid: 'winAbout', 
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 		
@@ -51,8 +51,8 @@
 	// TODO -50 tab group recomment
 	ph.ui.tabGroup = Ti.UI.createTabGroup({
 		id: 'firstTabGroup', 
-		tabBarVisible: false
-		// bottom: -50	
+		tabBarVisible: false,
+		bottom: -50	
 	});
 
 	// Create the individual tabs with titles and icons
@@ -117,16 +117,18 @@
 			ph.ui.dashboard();
 			break;
 			case 1:
-			ph.ui.faves();
+			ph.ui.tags();
+			
 			break;
 			case 2:
-			ph.ui.tags();
+			ph.ui.faves();
 			break;
 			case 3:
-			ph.ui.settings();
+			ph.ui.about();
+			
 			break;
 			case 4:
-			ph.ui.about();
+			ph.ui.settings();
 			break;
 		}
 	});
@@ -151,4 +153,5 @@
 		}, 1000);
 	};
 	ph.ui.tabGroup.open();
+	ph.ui.toggleTabGroup(ph.ui.tabGroup);
 })();

@@ -14,7 +14,13 @@
 })();
 
 //Include major UI components and styling properties
+// TODO the includes here should be checked on demand - sort.
 Ti.include(
 	'/ui/styles.js',
-	'/ui/MainWindow.js'
+	'/ui/Dashboard.js',
+	'/ui/Faves.js',
+	'/ui/Tags.js',
+	'/ui/About.js',
+	'/ui/MainWindow.js',
+	'/ui/Settings.js'
 );
