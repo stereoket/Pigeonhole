@@ -1,7 +1,7 @@
 (function() {
 	var platformWidth = Ti.Platform.displayCaps.platformWidth;
 	
-	Titanium.UI.iPhone.statusBarStyle= Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
+	// Titanium.UI.iPhone.statusBarStyle= Titanium.UI.iPhone.StatusBar.OPAQUE_BLACK;
 	
 	ph.ui.createAppTabGroup= function(_args) {
 		var tabGroup = Ti.UI.createTabGroup(_args);
@@ -30,8 +30,8 @@
 	});
 
 	ph.app.tags = ph.ui.createAppWindow({
-		title: 'Pigeonhole', 
-		titleid: 'winPigeonHole', 
+		title: 'Tags', 
+		titleid: 'winTags', 
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 	
@@ -118,14 +118,12 @@
 			break;
 			case 1:
 			ph.ui.tags();
-			
 			break;
 			case 2:
 			ph.ui.faves();
 			break;
 			case 3:
 			ph.ui.about();
-			
 			break;
 			case 4:
 			ph.ui.settings();
