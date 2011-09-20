@@ -8,5 +8,5 @@
 
 	
 	Ti.include(
-		'/model/Box.js'
+		'/model/BoxData.js'
 	);

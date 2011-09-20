@@ -23,7 +23,7 @@
 		return button;
 	};
 
-	ph.app.MainPigeon = ph.ui.createAppWindow({
+	ph.app.dashboard = ph.ui.createAppWindow({
 		title: 'PigeonHole', 
 		titleid: 'winPigeonHole', 
 		orientationModes: [Titanium.UI.PORTRAIT]
@@ -35,7 +35,7 @@
 		tabBarVisible: false, 
 		bottom: -50	
 	});
-	try {
+
 	// Create the individual tabs with titles and icons
 	var tab1 = ph.ui.createAppTab({
 	    window:ph.app.dashboard,
@@ -69,11 +69,9 @@
 		title:"Settings",
 	    window:ph.app.settings
 	});
-	} catch (e) {
-	Ti.API.error(e.message);
+	
 
-
-	}
+	
 	ph.ui.tabGroup.addTab(tab1);
 	ph.ui.tabGroup.addTab(tab2);
 	ph.ui.tabGroup.addTab(tab3);
@@ -92,30 +90,24 @@
 		    // Ti.API.info(ph.ui.tabGroup._activeTab.title);
 
 		    // create property in Ti namespace
-		    Ti.API._activeTab = ph.ui.tabGroup._activeTab;
-		    Ti.API.info(Ti.API._activeTab.title);
+		    // Ti.API._activeTab = ph.ui.tabGroup._activeTab;
+		    // Ti.API.info(Ti.API._activeTab.title);
 
 		switch(e.index){
 			case 0:
-			ph.ui.festivalCategories();
+			ph.ui.dashboard();
 			break;
 			case 1:
-			ph.ui.venuePage();
+			ph.ui.faves();
 			break;
 			case 2:
-	
-			ph.ui.winLatest();
-	
+			ph.ui.tags();
 			break;
 			case 3:
-			if(ph.ui.osname !== 'android'){
-			ph.ui.favourites();
-			} else {
-				ph.ui.aboutPage();
-			}
+			ph.ui.settings();
 			break;
 			case 4:
-			ph.ui.aboutPage();
+			ph.ui.about();
 			break;
 		}
 	});
@@ -139,6 +131,5 @@
 
 		}, 1000);
 	};
-	// Load Splash page with animation and load tabgroup
 	ph.ui.tabGroup.open();
 })();
