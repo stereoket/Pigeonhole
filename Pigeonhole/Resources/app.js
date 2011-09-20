@@ -79,11 +79,3 @@ Ti.include(
 	'/model/model.js',
 	'/config/config.js'
 );
-<<<<<<< HEAD
-// TODO Could use the splash screen fader
-// ph.ui.createSplashView(); 
-=======
-
-Ti.Box = require("ti.box");
-Ti.Box.apiKey ="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
->>>>>>> cfa0f19ce10bc75b0979dd43e9453524d2eec196
