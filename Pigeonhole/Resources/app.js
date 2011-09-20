@@ -73,6 +73,14 @@ var ph = {};
 	};
 })();
 
+// Include the oAuth lib files
+Ti.include(
+	'lib/sha1.js',
+	'lib/oauth.js',
+	'lib/oauth_adapter.js',
+	'lib/twitter_api.js'
+);
+
 //Include additional namespaces
 Ti.include(
 	'/ui/ui.js',
