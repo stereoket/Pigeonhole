@@ -30,7 +30,27 @@ ph.boxData =(function (context) {
 		};
 		var myBoxData = context.getDataFromBoxNet(processData,onError);
 	};
-	
+
+	context.postToEmail=function(holeObject){
+        var emailDialog = Ti.UI.createEmailDialog();
+        if (!emailDialog.isSupported()) {
+        	Ti.UI.createAlertDialog({
+        		title:'Information',
+        		message:'Email not available'
+        	}).show();
+        	return;
+        }
+        emailDialog.setSubject("You've been pigeonholed");
+        var emailTemplate = "I've pigeonholed your tweet";
+        emailTemplate += "\n" + holeObject.name + ' (' + holeObject.screen_name + ')';
+        emailTemplate += "\n" + holeObject.text;
+        emailTemplate += "\n" + holeObject.created_at;
+        emailTemplate += "\n\nhttp://pigeonhole.it/"+holeObject.id;
+        emailTemplate += "\nWhy don't you pigeonhole.it too!";
+
+        emailDialog.setMessageBody(emailTemplate);            
+        emailDialog.open();		
+	};	
 	context.getDataFromBoxNet=function(onSuccess,onError){
 
 		var dir = Ti.Box.retrieveFolder();     
