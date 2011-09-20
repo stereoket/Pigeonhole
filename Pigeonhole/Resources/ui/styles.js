@@ -3,10 +3,11 @@
 	ph.ui.theme = {
 		textColor:'#ffffff',
 		grayTextColor:'#888888',
-		headerColor:'#000',
+		headerColor:'#c0b595',
+		barColor1: '#966228',
 		lightBlue:'#006cb1',
 		darkBlue:'#0093AB',
-		backgroundColor: '#000',
+		backgroundColor: '#ffeccd',
 		selectedTab: '#FFA531', //TODO  when the button is depressed, should be added to style guides.
 		backgroundTabColor : '#FFA531',
 		fontFamily: ph.os({
@@ -43,9 +44,8 @@
 			height:'auto'
 		},
 		Window: {
-			backgroundImage: 'images/background.png',
 			backgroundColor: ph.ui.theme.backgroundColor,
-			barColor: '#000',
+			barColor: ph.ui.theme.barColor1,
 			touchEnabled:true,
 			softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''
 		},
