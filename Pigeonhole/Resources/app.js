@@ -76,13 +76,10 @@ Ti.Box.apiKey="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
 	};
 })();
 
-// Include the oAuth lib files
-Ti.include(
-	'lib/sha1.js',
-	'lib/oauth.js',
-	'lib/oauth_adapter.js',
-	'lib/twitter_api.js'
-);
+
+
+
+
 
 //Include additional namespaces
 Ti.include(
@@ -90,3 +87,18 @@ Ti.include(
 	'/model/model.js',
 	'/config/config.js'
 );
+
+ // var foo={
+	 // timeid:new Date().getTime(),
+	 // title:'Foo'
+ // };
+ // function downloadFile(){
+	 // ph.boxData.fetchFromBoxNet(null,null);
+ // };
+ // function uploadFile(){
+	 // ph.boxData.postToBoxNet(foo,downloadFile,null);
+// 	
+ // };
+ // if(!ph.boxData.isLoggedIn){
+	 // ph.boxData.login(uploadFile,null);
+ // };
