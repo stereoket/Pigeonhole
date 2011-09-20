@@ -1,5 +1,8 @@
 //All application functionality is namespaced here
 var ph = {};
+Ti.Box = require("ti.box");
+Ti.Box.apiKey="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
+
 (function() {
 	//application state variables are held in this namespace.  
 	//Like the current app window, for instance, which is created in app.js
