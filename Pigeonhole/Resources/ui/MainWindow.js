@@ -24,47 +24,66 @@
 	};
 
 	ph.app.dashboard = ph.ui.createAppWindow({
+		title: 'Pigeonhole', 
+		titleid: 'winPigeonHole', 
+		orientationModes: [Titanium.UI.PORTRAIT]
+	});
+
+	ph.app.tags = ph.ui.createAppWindow({
 		title: 'PigeonHole', 
 		titleid: 'winPigeonHole', 
 		orientationModes: [Titanium.UI.PORTRAIT]
 	});
 	
+	ph.app.dashboard = ph.ui.createAppWindow({
+		title: 'PigeonHole', 
+		titleid: 'winPigeonHole', 
+		orientationModes: [Titanium.UI.PORTRAIT]
+	});
+
+	ph.app.dashboard = ph.ui.createAppWindow({
+		title: 'PigeonHole', 
+		titleid: 'winPigeonHole', 
+		orientationModes: [Titanium.UI.PORTRAIT]
+	});
+		
 	// Create New tab group before adding individual tabs
+	// TODO -50 tab group recomment
 	ph.ui.tabGroup = Ti.UI.createTabGroup({
 		id: 'firstTabGroup', 
-		tabBarVisible: false, 
-		bottom: -50	
+		tabBarVisible: false
+		// bottom: -50	
 	});
 
 	// Create the individual tabs with titles and icons
 	var tab1 = ph.ui.createAppTab({
 	    window:ph.app.dashboard,
-		id:'winSched',
+		id:'winDashboard',
 		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
 		title:"Dashboard"
 	});
 	var tab2 = ph.ui.createAppTab({
-		id:'winVen',
+		id:'winTags',
 		icon:'images/tabgroups/' +ph.ui.tabImage('dfdf') ,
 		title:"Tags",
 	    window:ph.app.tags
 	});
 
 	var tab3 = ph.ui.createAppTab({
-		id:'winNews',
+		id:'winFaves',
 		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
 		title:"Faves",
 	    window:ph.app.faves
 	});
 
 	var tab4 = ph.ui.createAppTab({
-		id:'winFav',
+		id:'winAbout',
 		icon:'images/tabgroups/' +ph.ui.tabImage('dfd'),
 		title:"About",
 	    window:ph.app.about
 	});
 	var tab5 = ph.ui.createAppTab({
-		id:'winAbout',
+		id:'winSettings',
 		icon:'images/tabgroups/' +ph.ui.tabImage('sdfds'),
 		title:"Settings",
 	    window:ph.app.settings
