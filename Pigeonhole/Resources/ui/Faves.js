@@ -1,14 +1,9 @@
 (function(){
-<<<<<<< HEAD
 	ph.ui.faves = function(){
 		//alert('Faves Page');
 		// Call the fetchFavs() function from here to test
 		ph.ui.twitter.init();
 		ph.ui.twitter.fetchFavs(ph.ui.faves.displayTable);
-=======
-		ph.ui.faves = function(){
->>>>>>> e7d2e89e087273ee54d38f47edcef48e6b8b1347
-		return;
 	};
 	
 	ph.ui.faves.displayTable = function(){

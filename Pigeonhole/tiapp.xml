@@ -7,7 +7,7 @@
         <target device="android">false</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <id>it.pigeonhole.hackathon</id>
+    <id>uk.co.spiritquest.pigeonhole1</id>
     <name>Pigeonhole</name>
     <version>1.0</version>
     <publisher>ketan</publisher>
@@ -36,6 +36,6 @@
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android"/>
     <modules>
-    	<plugin version="1.0" platform="iphone">ti.box</plugin>
+        <plugin platform="iphone" version="1.0">ti.box</plugin>
     </modules>
 </ti:app>
