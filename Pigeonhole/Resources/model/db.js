@@ -68,5 +68,89 @@
 		Ti.App.fireEvent("databaseUpdated");
 	};	
 
+	ph.db.insertJSON = function( _args ){
+		var db = Ti.Database.open('pigeonhole');
+		try{
+			var rows = db.execute("SELECT * FROM json_cache WHERE apiName = ?", _args.apiName);
+			if(rows){
+				db.execute("UPDATE json_cache SET json = ?, date = strftime('%s','now') WHERE apiName = ?", _args.response, _args.apiName);
+			} else {
+				db.execute("INSERT INTO json_cache(json, date, apiName) VALUES(?,strftime('%s','now'),?)", _args.response, _args.apiName);
+			}
+			
+		} catch(e){
+	        // Found error. Return false
+	        Ti.API.error('ph.db.insertJSON: '+e.message);
+	        return false;			
+		}
+		db.close();	
+		Ti.App.fireEvent("databaseUpdated");
+	};	
+	ph.db.checkCache = function ( _args ){
+		// check if cache exists
+		var api = _args.apiName;
+		
+		var db = Ti.Database.open('pigeonhole');
+		
+		try{
+			var rows = db.execute("SELECT * FROM json_cache WHERE apiName = ?", api);
+			if(rows.isValidRow){
+				var cachTimestamp = rows.fieldByName('date');
+				// check if date is out of TTL range
+				
+				var currDate = new Date();
+				var cacheDate = new Date();
+				
+				cacheDate.setTime(cachTimestamp*1000); // UNIX timestamp needs modifier for Javascript
+				
+				var minuteOffset =  (currDate.getTime() - cacheDate.getTime()) / 60000; // converts milliseconds to minutes
+				if (minuteOffset < ph.config.cacheOffset) {
+					// grab cached value
+					var cache = rows.fieldByName('json');
+					db.close();
+					Ti.API.info('ph.db.checkCache : Using cached database JSON for: ' + api);
+					return cache;
+				} else {
+					Ti.API.error('ph.db.checkCache: '+e.message);
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} catch(e){
+	        // Found error. Return false
+	        Ti.API.error('ph.db.checkCache: '+e.message);
+	        return false;			
+		}
+		
+		
+		// retrieve and return cache results 
+		
+		
+		
+	}	
 
+	ph.db.checkDashboardStats = function (_args) {
+		var db = Ti.Database.open('pigeonhole');
+		var rows = db.execute("select * from stats");
+		var data = [];
+		while(rows.isValidRow()){
+			data.push({
+				type: rows.fieldByName('type'),
+				value: rows.fieldByName('value') 
+			});
+			rows.next();
+		}
+		db.close();
+		for (var i= 0; i < data.length; i++){
+			switch(data[i].type){
+				case 'filed':
+				ph.ui.dashboard.stats.filed = data[i].value;
+				break;
+				case 'tagged':
+				ph.ui.dashboard.stats.tagged = data[i].value;
+				break;
+			}
+		}	
+	}
 })();

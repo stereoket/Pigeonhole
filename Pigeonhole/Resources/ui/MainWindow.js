@@ -111,7 +111,7 @@
 
 		switch(e.index){
 			case 0:
-			ph.ui.dashboard();
+			ph.ui.showDashboard();
 			break;
 			case 1:
 			ph.ui.faves();

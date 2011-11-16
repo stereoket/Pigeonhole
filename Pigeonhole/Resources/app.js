@@ -1,7 +1,7 @@
 //All application functionality is namespaced here
 var ph = {};
-Ti.Box = require("ti.box");
-Ti.Box.apiKey="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
+// Ti.Box = require("ti.box");
+// Ti.Box.apiKey="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
 
 (function() {
 	//application state variables are held in this namespace.  
@@ -75,12 +75,8 @@ Ti.Box.apiKey="7p7i0mc8pij6qktyvq756frr6cfi3rg1";
 		}
 	};
 })();
-
-
-
-
-
-
+var charts = require('ti.charts');
+Ti.API.info("module is => " + charts);
 //Include additional namespaces
 Ti.include(
 	'/ui/ui.js',

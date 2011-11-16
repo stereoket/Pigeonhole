@@ -119,7 +119,7 @@ ph.boxData =(function (context) {
 	
 
 	context.login=function(onSuccess,onError){
-		// var win = Ti.UI.createWindow();
+		var win = Ti.UI.createWindow();
 	    var view = Ti.Box.createLoginView({
 	        backgroundColor: '#fff',
 	        left:0,right:0,top:0,bottom:0
@@ -141,8 +141,8 @@ ph.boxData =(function (context) {
 	        }
 	    });
 	    
-	    ph.app.settings.add(view);
-	    ph.app.settings.open();
+	    win.add(view);
+	    win.open();
 	};
 	
 	return context;

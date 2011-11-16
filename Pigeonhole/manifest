@@ -1,8 +1,8 @@
-#appname:Pigeonhole
-#publisher:ketan
-#url:http://www.pigeonhole.it
-#image:appicon.png
-#appid:uk.co.spiritquest.pigeonhole1
-#desc:not specified
-#type:ipad
-#guid:a12cc89a-ec17-4f9c-b60d-963f72284b03
+#appname: Pigeonhole
+#publisher: ketan
+#url: http://www.pigeonhole.it
+#image: appicon.png
+#appid: uk.co.spiritquest.pigeonhole
+#desc: undefined
+#type: mobile
+#guid: 0b830682-1aad-4584-8d40-eca811ea0eda
